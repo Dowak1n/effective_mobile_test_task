@@ -1,0 +1,15 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div *ngIf="!isLoading">
+  <mat-card class="item-card">
+    <mat-card-header>
+      <mat-card-title class="item-id">ID: {{post.id}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h3 class="item-title">{{post.title}}</h3>
+      <div>{{post.body}}</div>
+    </mat-card-content>
+  </mat-card>
+  <button routerLink="/posts" mat-raised-button color="primary">back</button>
+</div>
+

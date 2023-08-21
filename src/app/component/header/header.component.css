@@ -1,0 +1,15 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background: #3f51b5;;
+  align-items: center;
+}
+.button-margin {
+  margin-right: 16px;
+}
+
+.footer-title {
+  margin: 0;
+  color: white;
+}

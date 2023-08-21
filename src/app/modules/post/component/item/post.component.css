@@ -1,0 +1,13 @@
+.item-card {
+  width: 500px;
+  margin-bottom: 16px;
+}
+
+.item-id {
+  margin-bottom: 12px;
+}
+
+.item-title {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
