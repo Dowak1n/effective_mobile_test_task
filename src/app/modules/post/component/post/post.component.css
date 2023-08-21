@@ -1,13 +1,13 @@
-.item-card {
+.post-card {
   width: 500px;
   margin-bottom: 16px;
 }
 
-.item-id {
+.post-id {
   margin-bottom: 12px;
 }
 
-.item-title {
+.post-title {
   text-transform: uppercase;
   margin-bottom: 8px;
 }

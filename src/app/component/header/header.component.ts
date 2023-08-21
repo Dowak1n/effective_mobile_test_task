@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserSessionManager } from 'src/app/shared/services/user-session.service';
 
 @Component({
   selector: 'header-component',
@@ -7,10 +9,9 @@ import { Component} from '@angular/core';
 })
 
 export class HeaderComponent {
+  constructor(private authService: AuthService, protected userSession: UserSessionManager){}
 
   logOut() {
-    if (sessionStorage.getItem('SessionStatus') === 'true') {
-      sessionStorage.setItem('SessionStatus','false')
-    }
+    this.authService.logout()
   }
 }

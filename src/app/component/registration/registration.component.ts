@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import {ErrorMessageService} from "../../shared/services/error-message.service";
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'registration-component',
@@ -13,7 +14,7 @@ export class RegistrationComponent {
   myForm : FormGroup;
   usedNameError: boolean = false;
 
-  constructor(private router: Router, private errorMessageService: ErrorMessageService){
+  constructor(private router: Router, private errorMessageService: ErrorMessageService,  private authService: AuthService){
     this.myForm = new FormGroup({
       "userName": new FormControl("", [Validators.required, Validators.minLength(2)]),
       "userPassword": new FormControl("",[
@@ -34,14 +35,11 @@ export class RegistrationComponent {
   }
 
   submit(){
-    if (localStorage.getItem(this.myForm.value.userName)) {
+    this.authService.signUp(this.myForm.value.userName, this.myForm.value.userPassword, (result) => {
+      if (result) {
+        this.router.navigate(['posts'])
+      }
       this.usedNameError = true;
-  } else {
-      localStorage.setItem(this.myForm.value.userName, this.myForm.value.userPassword);
-      sessionStorage.setItem('SessionStatus', 'true');
-      this.router.navigate(['posts'])
-    }
+    })
   }
-
-  protected readonly localStorage = localStorage;
 }

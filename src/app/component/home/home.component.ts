@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'home-component',
@@ -6,6 +6,4 @@ import { Component} from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 
-export class HomeComponent {
-  protected readonly String = String;
-}
+export class HomeComponent {}

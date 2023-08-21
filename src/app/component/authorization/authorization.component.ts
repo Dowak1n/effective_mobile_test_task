@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import {ErrorMessageService} from "../../shared/services/error-message.service";
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'authorization-component',
@@ -10,7 +11,7 @@ import {ErrorMessageService} from "../../shared/services/error-message.service";
 
 export class AuthorizationComponent {
   myForm : FormGroup;
-  constructor(private router: Router, private errorMessageService: ErrorMessageService){
+  constructor(private router: Router, private errorMessageService: ErrorMessageService, private authService: AuthService){
     this.myForm = new FormGroup({
       "userName": new FormControl("", [Validators.required, Validators.minLength(2)]),
       "userPassword": new FormControl("",[
@@ -31,9 +32,8 @@ export class AuthorizationComponent {
   }
 
   submit(){
-    if (localStorage.getItem(this.myForm.value.userName) === this.myForm.value.userPassword) {
-      sessionStorage.setItem('SessionStatus', 'true');
+    this.authService.login(this.myForm.value.userName, this.myForm.value.userPassword, () => {
       this.router.navigate(['posts'])
-    }
+    })
   }
 }

@@ -1,7 +1,7 @@
-<div class="footer-container">
-  <h2 class="footer-title">Effective Mobile Task</h2>
+<div class="header-container">
+  <h2 class="header-title">Effective Mobile Task</h2>
   <div>
-    <button routerLink="authorization" class="button-margin" mat-raised-button>sign in</button>
-    <button (click)="logOut()" routerLink="authorization" mat-raised-button>log out</button>
+    <button *ngIf="!userSession.isLoggidIn" routerLink="authorization" class="header-button" mat-raised-button>Sign in</button>
+    <button *ngIf="userSession.isLoggidIn" (click)="logOut()" routerLink="authorization" mat-raised-button>Log out</button>
   </div>
 </div>
